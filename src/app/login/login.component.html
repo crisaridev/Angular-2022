@@ -1,0 +1,15 @@
+  <div class="login-container" *ngIf="formLogin" [formGroup]="formLogin">
+    <img src="./assets/FCB.png" alt="Logo FCB">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>E-mail</mat-label>
+      <input matInput placeholder="user@example.com" value="" formControlName="email">
+        <!-- <mat-error *ngIf="formLogin.get('email')?.hasError('required')">El campo usuario es requerido</mat-error> -->
+        <mat-error *ngIf="formLogin.get('email')?.hasError('email')">El campo debe ser un correo válido</mat-error>
+      </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="********" type="password" formControlName="password">
+      <mat-error *ngIf="formLogin.get('password')?.hasError('required')">El campo contraseña es requerido</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="formLogin.invalid || isLoading" (click)="loginClick()">Primary</button>
+  </div>
